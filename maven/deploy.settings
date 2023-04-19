@@ -1,0 +1,8 @@
+siteUrl = https://github.com/Aghajari/AutoAnimate
+gitUrl = https://github.com/Aghajari/AutoAnimate.git
+version = 1.0.0
+groupId = io.github.aghajari
+licenses = ['Apache-2.0']
+id = AutoAnimate
+name = AutoAnimate
+description = AutoAnimate is a custom Shared Element Transaction that automatically animates your views based on Figma Smart Animate.
