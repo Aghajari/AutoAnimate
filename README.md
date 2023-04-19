@@ -67,3 +67,148 @@ supportFragmentManager
     .replace(R.id.container, fragment)
     .commit()
 ```
+
+## Example
+
+- Step1: Create FragmentA and its layout:
+
+<img src="/images/ex_fragment_a.png" alt="sample" title="sample" width="250" />
+
+<details><summary><b>Click to see FragmentA layout</b></summary>
+<p>
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentA">
+
+    <View
+        android:id="@+id/shape"
+        android:transitionName="shape"
+        android:layout_gravity="center"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_a" />
+
+</FrameLayout>
+```
+
+</p></details>
+
+- Step2: Create FragmentB and its layout:
+
+<img src="/images/ex_fragment_b.png" alt="sample" title="sample" width="250" />
+
+<details><summary><b>Click to see FragmentB layout</b></summary>
+<p>
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentB">
+
+    <View
+        android:id="@+id/shape"
+        android:transitionName="shape"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="56dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:background="@drawable/bg_b" />
+
+</FrameLayout>
+```
+
+</p></details>
+
+
+- Step3: Start FragmentB by clicking on shape and Done!
+
+<details><summary><b>Click to see the source</b><br><br>
+
+```kotlin
+private val autoAnimateTransaction = AutoAnimateTransaction.build(
+    duration = 800,
+    interpolator = OvershootInterpolator()
+)
+```
+
+</summary>
+<p>
+
+```kotlin
+class FragmentA : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return FragmentABinding.inflate(inflater).apply {
+            shape.setOnClickListener { startFragment(FragmentB(), shape) }
+        }.root
+    }
+}
+
+class FragmentB : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return FragmentBBinding.inflate(inflater).apply {
+            shape.setOnClickListener { popBackStack() }
+        }.root
+    }
+}
+
+fun Fragment.startFragment(fragment: Fragment, view: View) {
+    fragment.sharedElementEnterTransition = autoAnimateTransaction
+    sharedElementReturnTransition = autoAnimateTransaction
+
+    requireActivity()
+        .supportFragmentManager
+        .beginTransaction()
+        .addToBackStack(null)
+        .addSharedElement(view, view.transitionName)
+        .replace(R.id.container, fragment)
+        .commit()
+}
+```
+
+</p></details>
+
+## Customize Properties
+
+```kotlin
+private val autoAnimateTransaction = AutoAnimateTransaction.build(
+    mapOf(
+        "shape" to listOf(
+            LayoutAutoAnimate().apply {
+                maxFraction = 1f
+            },
+            BackgroundAutoAnimate().apply {
+                interpolator = LinearInterpolator()
+                duration = 400
+            },
+            ScaleYAutoAnimate(),
+            ScaleXAutoAnimate().apply {
+                startDelay = 200
+            },
+        )
+    ),
+    duration = 800,
+    interpolator = OvershootInterpolator()
+)
+```
+
+| Transition | Customized |
+| :---: | :---: |
+| <img src="./images/ex_result.gif" width=250 title="Result"> | <img src="./images/ex_result_customize.gif" width=250 title="Result"> |
