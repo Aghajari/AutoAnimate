@@ -27,6 +27,10 @@ import androidx.core.animation.doOnEnd
 import androidx.transition.Transition
 import androidx.transition.TransitionValues
 
+/**
+ * @version 1.0.2
+ * @author AmirHossein Aghajari
+ */
 open class AutoAnimateTransition : Transition() {
 
     open val propertyMapper = mutableMapOf<String, AutoAnimateProperties>()
