@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AutoAnimate</string>
+    <string name="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce odio ex, pulvinar at urna in, molestie posuere massa. Vivamus rhoncus risus eu dignissim feugiat. Morbi facilisis pharetra orci a mattis. Aliquam at magna eu nulla accumsan porttitor. Curabitur fermentum feugiat auctor. Aenean nec cursus mi, et dictum turpis. Aliquam erat volutpat. Fusce pharetra orci quis ante congue consequat. Maecenas in orci ac ante ullamcorper accumsan. Integer finibus pharetra bibendum. Aliquam ullamcorper luctus magna quis venenatis. Pellentesque viverra ac lorem id vestibulum. Morbi quis congue tortor. Curabitur eget nunc egestas, cursus ligula a, cursus mauris.</string>
+    <string name="footer_text">AutoAnimate</string>
+</resources>

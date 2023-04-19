@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0"
+    tools:context=".fragments.FragmentA">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="56dp"
+        android:text="Hello World!"
+        android:textColor="#CC765F"
+        android:textSize="20sp"
+        android:transitionName="title" />
+
+    <com.aghajari.autoanimate.view.ClipFrameLayout
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="32dp"
+        android:background="@drawable/fragment_a"
+        android:elevation="8dp"
+        android:transitionName="card">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:transitionName="image"
+            app:srcCompat="@drawable/cover" />
+
+    </com.aghajari.autoanimate.view.ClipFrameLayout>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="292dp"
+        android:alpha="0"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:text="@string/text"
+        android:textColor="#808080"
+        android:textSize="15sp"
+        android:transitionName="text"
+        android:translationY="150dp" />
+
+    <FrameLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/footer"
+        android:elevation="8dp"
+        android:transitionName="footer">
+
+        <TextView
+            android:id="@+id/footer_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/footer_text"
+            android:textColor="#262626"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:transitionName="footer_title" />
+    </FrameLayout>
+</FrameLayout>
