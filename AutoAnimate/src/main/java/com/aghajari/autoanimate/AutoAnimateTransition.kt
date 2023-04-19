@@ -27,7 +27,7 @@ import androidx.core.animation.doOnEnd
 import androidx.transition.Transition
 import androidx.transition.TransitionValues
 
-open class AutoAnimateTransaction : Transition() {
+open class AutoAnimateTransition : Transition() {
 
     open val propertyMapper = mutableMapOf<String, AutoAnimateProperties>()
     open var defaultInterpolator: TimeInterpolator? = null
@@ -141,8 +141,8 @@ open class AutoAnimateTransaction : Transition() {
             propertyMapper: Map<String, AutoAnimateProperties> = mapOf(),
             duration: Long = 500,
             interpolator: TimeInterpolator = LinearInterpolator()
-        ): AutoAnimateTransaction {
-            return AutoAnimateTransaction().apply {
+        ): AutoAnimateTransition {
+            return AutoAnimateTransition().apply {
                 this.propertyMapper.putAll(propertyMapper)
                 this.duration = duration
                 this.defaultInterpolator = interpolator

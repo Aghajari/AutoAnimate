@@ -7,7 +7,7 @@ import android.view.animation.LinearInterpolator
 import android.view.animation.OvershootInterpolator
 import androidx.fragment.app.Fragment
 
-private val autoAnimateTransaction = AutoAnimateTransaction.build(
+private val autoAnimateTransition = AutoAnimateTransition.build(
     mapOf(
         "image" to listOf(
             BoundsAutoAnimate()
@@ -40,8 +40,8 @@ fun Fragment.startFragment(
     fragment: Fragment,
     vararg views: View
 ) {
-    fragment.sharedElementEnterTransition = autoAnimateTransaction
-    sharedElementReturnTransition = autoAnimateTransaction
+    fragment.sharedElementEnterTransition = autoAnimateTransition
+    sharedElementReturnTransition = autoAnimateTransition
 
     requireActivity()
         .supportFragmentManager
